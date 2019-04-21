@@ -1,5 +1,6 @@
 package com.example.galleryapplication
 
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.view.MenuItemCompat
@@ -70,6 +71,7 @@ class GalleryActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String): Boolean {
                     adapter.filter.filter(newText)
+
                 return true
             }
             override fun onQueryTextSubmit(query: String): Boolean {
@@ -84,37 +86,6 @@ class GalleryActivity : AppCompatActivity() {
             return true
         return super.onOptionsItemSelected(item)
     }
-
-
-/*    fun getImages(){
-        var url = "https://pixabay.com/api/?key=12175339-7048b7105116d7fa1da74220c"
-
-        val request = Request.Builder().url(url).build()
-
-        val client = OkHttpClient()
-        client.newCall(request).enqueue(object: Callback {
-            override fun onResponse(call: Call, response: Response) {
-                val body = response.body()?.string()
-                val gson = GsonBuilder().create()
-                val mGallery= gson.fromJson(body, Gallery::class.java)
-
-            *//*    runOnUiThread {adapter = GalleryAdapter(mGallery)
-                    gallery_recyclerview.adapter = adapter
-                }*//*
-
-
-
-            }
-
-            override fun onFailure(call: Call, e: IOException) {
-                println("Failed to execute request")
-            }
-
-
-        })
-
-
-    }*/
 
 
 }
